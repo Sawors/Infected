@@ -13,11 +13,16 @@ import java.util.logging.Level;
 public final class Infected extends JavaPlugin {
     
     private static JavaPlugin instance;
+    private static boolean qualityarmoryenabled = false;
     
     @Override
     public void onEnable() {
         // Plugin startup logic
         instance = this;
+        
+        saveDefaultConfig();
+        
+        qualityarmoryenabled = getServer().getPluginManager().isPluginEnabled("QualityArmory");
     }
     
     @Override
@@ -28,6 +33,10 @@ public final class Infected extends JavaPlugin {
     
     public static JavaPlugin getPlugin(){
         return instance;
+    }
+    
+    public static boolean isQualityArmoryEnabled(){
+        return qualityarmoryenabled;
     }
     
     public static void logAdmin(TextComponent msg){
